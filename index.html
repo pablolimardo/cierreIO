@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo prepararte · Evaluación oral</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e27; --card:rgba(255,255,255,.05); --bd:rgba(255,255,255,.13);
+  --tx:#e6ebff; --mut:#9aa6d6; --g:#00ff88; --c:#00d9ff; --y:#ffd166; --r:#ff6b81;
+  --code:#0d1333; --shadow:0 8px 30px rgba(0,0,0,.35);
+}
+[data-theme="light"]{
+  --bg:#f4f7fb; --card:#ffffff; --bd:#d5deec; --tx:#14213d; --mut:#51607f;
+  --g:#00875a; --c:#0077a8; --y:#a86b00; --r:#c0293f; --code:#eef3fa; --shadow:0 6px 20px rgba(20,33,61,.1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.55;
+  background-image:radial-gradient(circle at 15% 0%,rgba(0,217,255,.08),transparent 45%),radial-gradient(circle at 90% 20%,rgba(0,255,136,.07),transparent 40%);
+  background-attachment:fixed}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px 60px}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+code{font-family:'JetBrains Mono',ui-monospace,monospace;background:var(--code);padding:1px 7px;border-radius:6px;font-size:.9em;color:var(--c)}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd)}
+.top-in{max-width:1100px;margin:0 auto;padding:10px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.brand{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--mut)}
+.brand b{color:var(--g)}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{font-family:'JetBrains Mono',monospace;font-size:.85rem;border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:8px 14px;border-radius:10px;cursor:pointer;transition:.15s}
+.btn:hover{border-color:var(--c);transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(135deg,var(--g),var(--c));color:#04122a;border:none;font-weight:600}
+.btn.primary:hover{filter:brightness(1.08)}
+.timer{font-family:'Orbitron',sans-serif;font-size:1.25rem;font-weight:800;padding:4px 14px;border:1px solid var(--bd);border-radius:10px;min-width:96px;text-align:center;color:var(--g)}
+.timer.warn{color:var(--y);border-color:var(--y)}
+.timer.late{color:var(--r);border-color:var(--r)}
+
+/* hero */
+.hero{padding:48px 0 20px}
+.tag{font-family:'JetBrains Mono',monospace;color:var(--c);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
+h1{font-family:'Orbitron',sans-serif;font-weight:800;font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.15;margin:8px 0 14px}
+h1 span{background:linear-gradient(90deg,var(--g),var(--c));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mut);max-width:760px;font-size:1.1rem}
+
+h2{font-family:'Orbitron',sans-serif;font-size:1.3rem;margin:44px 0 6px}
+.sub{font-family:'JetBrains Mono',monospace;color:var(--mut);font-size:.82rem;margin-bottom:16px}
+.sub::before{content:"// ";color:var(--g)}
+
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:20px;box-shadow:var(--shadow);backdrop-filter:blur(8px)}
+.grid{display:grid;gap:16px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+
+/* steps */
+.step{position:relative;padding-top:34px}
+.step .n{position:absolute;top:-14px;left:18px;font-family:'Orbitron',sans-serif;font-weight:800;background:linear-gradient(135deg,var(--g),var(--c));color:#04122a;border-radius:10px;padding:4px 12px}
+.step h3{font-size:1.05rem;margin-bottom:4px}
+.step .t{font-family:'JetBrains Mono',monospace;color:var(--y);font-size:.82rem;margin-bottom:6px}
+.step p{color:var(--mut);font-size:.97rem}
+
+/* rules */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{border:1px solid var(--bd);border-radius:999px;padding:9px 16px;background:var(--card);font-size:.95rem}
+.chip b{color:var(--g)}
+.comodin{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:14px}
+.comodin .state{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--mut)}
+.comodin.used .state{color:var(--y)}
+
+/* blocks */
+.blk{display:flex;flex-direction:column;gap:10px;border-top:4px solid var(--c)}
+.blk.b2{border-top-color:var(--g)} .blk.b3{border-top-color:var(--y)} .blk.b4{border-top-color:var(--r)} .blk.b1{border-top-color:var(--mut);opacity:.9}
+.blk h3{font-size:1.05rem}
+.blk .mat{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.blk p{color:var(--mut);font-size:.95rem}
+.q{min-height:76px;background:var(--code);border:1px dashed var(--bd);border-radius:12px;padding:12px 14px;font-size:.98rem}
+.q.empty{color:var(--mut);font-style:italic}
+.pop{animation:pop .25s ease}
+@keyframes pop{from{transform:scale(.97);opacity:.3}to{transform:scale(1);opacity:1}}
+
+/* deck */
+.deck-wrap{display:grid;grid-template-columns:1fr;gap:16px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.filters .btn.on{border-color:var(--g);color:var(--g)}
+.fail{min-height:210px;display:flex;flex-direction:column;gap:10px;justify-content:center;border:2px solid var(--bd)}
+.fail.cod{border-color:var(--y)} .fail.ele{border-color:var(--g)} .fail.int{border-color:var(--r)}
+.fail .kind{font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.fail h3{font-family:'Orbitron',sans-serif;font-size:1.25rem}
+.fail p{font-size:1.15rem}
+.fail.idle{align-items:center;text-align:center;color:var(--mut)}
+.deckbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.count{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--mut)}
+
+/* layers */
+.layers{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.layer{background:var(--code);border:1px solid var(--bd);border-radius:10px;padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:.88rem}
+.arrow{color:var(--g);font-weight:700}
+
+/* table */
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--bd);vertical-align:top}
+th{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--mut);text-transform:uppercase}
+.badge{font-family:'Orbitron',sans-serif;font-weight:800;padding:4px 12px;border-radius:8px;display:inline-block}
+.bL{background:rgba(0,255,136,.15);color:var(--g)} .bPL{background:rgba(255,209,102,.18);color:var(--y)} .bEP{background:rgba(255,107,129,.16);color:var(--r)}
+
+footer{margin-top:54px;padding-top:18px;border-top:1px solid var(--bd);color:var(--mut);font-size:.85rem;text-align:center}
+@media print{.top,.btn,.filters,.deckbar{display:none!important}body{background:#fff;color:#000}.card{box-shadow:none}}
+
+.tips{list-style:none;display:grid;gap:12px;counter-reset:t}
+.tips li{counter-increment:t;position:relative;padding:12px 14px 12px 54px;background:var(--code);border:1px solid var(--bd);border-radius:12px}
+.tips li::before{content:counter(t);position:absolute;left:14px;top:10px;font-family:'Orbitron',sans-serif;font-weight:800;background:linear-gradient(135deg,var(--g),var(--c));color:#04122a;border-radius:8px;padding:2px 10px}
+.temas{margin:8px 0 0 18px;color:var(--mut);font-size:.95rem}
+.temas li{margin:3px 0}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <div class="brand"><b>Esc. Industrial N°9</b> · Sistemas Embebidos y SCADA · 6° 1° · 2026</div>
+    <div class="tools">
+      <button class="btn" id="themeBtn">☾ / ☀</button>
+      <button class="btn" onclick="window.print()">🖨 Imprimir</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="tag">Informe Orientador · Para que te prepares</div>
+  <h1>Cómo es la <span>evaluación oral</span></h1>
+  <p class="lead">Las evaluaciones orales son el <b>miércoles y el jueves</b>. Vas a contarme tu proyecto con tus propias palabras. Acá tenés qué temas entran y cómo prepararte. Las preguntas no se reparten de antemano: lo que cuenta es que entiendas, no que memorices.</p>
+</header>
+
+<h2>Cómo va tu turno</h2>
+<div class="sub">unos 10 minutos en el escritorio · miércoles y jueves</div>
+<div class="grid g3">
+  <div class="card step"><span class="n">1</span>
+    <div class="t">≈ 2 min · Calentamiento</div>
+    <h3>Contame qué hiciste</h3>
+    <p>Qué hace tu parte del proyecto y qué tecnologías usaste. Elegís por dónde empezar.</p>
+  </div>
+  <div class="card step"><span class="n">2</span>
+    <div class="t">≈ 4 min · Zona técnica</div>
+    <h3>Preguntas por bloque</h3>
+    <p>Una pregunta de concepto por bloque. Si te trabás en uno, cambiamos de bloque.</p>
+  </div>
+  <div class="card step"><span class="n">3</span>
+    <div class="t">≈ 3 min · Tarjeta de falla</div>
+    <h3>Detective de bugs</h3>
+    <p>Un problema del proyecto para razonar en voz alta. Importa cómo pensás, no adivinar.</p>
+  </div>
+</div>
+
+<h2>Juego limpio</h2>
+<div class="sub">las reglas</div>
+<div class="chips">
+  <div class="chip">📵 <b>Sin celu ni IA</b> durante tu turno</div>
+  <div class="chip">🧑‍🏫 Podés usar el <b>pizarrón</b> y la <b>PC</b></div>
+  <div class="chip">🗣️ <b>Pensá en voz alta</b>: el camino cuenta</div>
+  <div class="chip">🃏 Tenés <b>1 pista comodín</b> (ese bloque llega como máximo a PL)</div>
+  <div class="chip">📅 Los orales son el <b>miércoles</b> y el <b>jueves</b>, en horario de clase</div>
+</div>
+
+<h2>Qué temas entran</h2>
+<div class="sub">sin preguntas: estudiá el porqué de cada cosa</div>
+<div class="grid g4">
+  <div class="card blk b1">
+    <div class="mat">Sistemas Embebidos</div>
+    <h3>1 · Cadena de medición</h3>
+    <ul class="temas"><li>De la red de 220 V al dato digital</li><li>Sensores, offset y ADC</li><li>Muestreo y valor eficaz</li><li>Seguridad y aislación</li></ul>
+    <p>📅 Se defiende en <b>tu oral</b>, con la ficha de la misión de investigación.</p>
+  </div>
+  <div class="card blk b2">
+    <div class="mat">Sistemas Embebidos</div>
+    <h3>2 · Magnitudes eléctricas</h3>
+    <ul class="temas"><li>Vrms, Irms, THD, FP</li><li>Potencia activa</li><li>Rangos normales y por qué</li></ul>
+  </div>
+  <div class="card blk b3">
+    <div class="mat">Sistemas Embebidos</div>
+    <h3>3 · Código del analizador</h3>
+    <ul class="temas"><li>Clases, herencia y override</li><li><code>zip()</code> y el ciclo de medición</li><li>El historial</li><li>Del <code>input()</code> al ESP32</li></ul>
+  </div>
+  <div class="card blk b4">
+    <div class="mat">Sistemas SCADA</div>
+    <h3>4 · Integración</h3>
+    <ul class="temas"><li>MQTT y Mosquitto</li><li>Node-RED</li><li>Flet</li><li>El viaje del dato hasta la pantalla</li></ul>
+  </div>
+</div>
+
+<h2>Cómo prepararte</h2>
+<div class="sub">sin IA, solo vos y tu proyecto</div>
+<div class="card">
+  <ol class="tips">
+    <li><b>Explicáselo en voz alta a un compañero</b>, sin mirar apuntes. Donde te trabás, ahí tenés que estudiar.</li>
+    <li><b>Dibujá de memoria</b> el recorrido del dato, de la placa a la pantalla. Después compará con tu proyecto real.</li>
+    <li><b>Rompé tu código a propósito</b>: cambiá un orden, sacá una línea, tipeá una letra. Anotá qué pasa y por qué.</li>
+    <li><b>Inventá tus propias analogías</b> (LEGO, recetas, videojuegos). Si podés explicarlo así, lo entendiste.</li>
+    <li><b>Preguntate "¿por qué?"</b> hasta que no puedas seguir. Ese es tu punto de estudio.</li>
+    <li><b>Anotá tus dudas y traelas.</b> Saber qué no entendés también suma.</li>
+  </ol>
+</div>
+
+<h2>Cómo se evalúa</h2>
+<div class="sub">qué se mira en cada bloque</div>
+<div class="card" style="padding:6px 10px;overflow-x:auto">
+  <table>
+    <thead><tr><th>Nivel</th><th>Qué se ve en tu respuesta</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge bL">L</span><br><small>Logrado</small></td><td>Explicás el <b>porqué</b> con tus palabras, resolvés la falla ordenadamente y relacionás tu parte con el resto del sistema.</td></tr>
+      <tr><td><span class="badge bPL">PL</span><br><small>Parcialmente logrado</small></td><td>Sabés <b>qué</b> hace cada cosa, pero cuesta explicar por qué, o llegás a la solución con una ayuda.</td></tr>
+      <tr><td><span class="badge bEP">EP</span><br><small>En proceso</small></td><td>Todavía no podés explicar ni resolver. Es una señal de <b>qué reforzar</b>, y lo conversamos juntos.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>Sistemas Embebidos y Sistemas SCADA · 6° 1° · Escuela Industrial N°9 "15 de Noviembre" · El Calafate<br>Prof. Pablo Limardo – Jefatura ACPI · Ciclo 2026</footer>
+</div>
+
+<script>
+try{var t=localStorage.getItem('guia-tema'); if(t) document.documentElement.setAttribute('data-theme',t);}catch(e){}
+document.getElementById('themeBtn').addEventListener('click',function(){
+  var nx=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',nx);
+  try{localStorage.setItem('guia-tema',nx);}catch(e){}
+});
+</script>
+</body>
+</html>
