@@ -115,6 +115,16 @@ footer{margin-top:54px;padding-top:18px;border-top:1px solid var(--bd);color:var
 .tips li::before{content:counter(t);position:absolute;left:14px;top:10px;font-family:'Orbitron',sans-serif;font-weight:800;background:linear-gradient(135deg,var(--g),var(--c));color:#04122a;border-radius:8px;padding:2px 10px}
 .temas{margin:8px 0 0 18px;color:var(--mut);font-size:.95rem}
 .temas li{margin:3px 0}
+
+.gl-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.gl-tools input{font-family:'JetBrains Mono',monospace;font-size:.9rem;color:var(--tx);background:var(--code);border:1px solid var(--bd);border-radius:10px;padding:9px 14px;min-width:260px}
+.gl{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.gl h3{font-family:'JetBrains Mono',monospace;font-size:1.05rem;color:var(--c);margin-bottom:6px}
+.gl p{font-size:.95rem;color:var(--mut)}
+.gl .an{margin-top:6px;color:var(--tx);font-size:.92rem}
+.gl pre.ex{margin-top:10px;background:var(--code);border:1px solid var(--bd);border-radius:10px;padding:10px 12px;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.5;overflow-x:auto;color:var(--tx)}
+.gl-empty{display:none;color:var(--mut);font-style:italic;margin-top:10px}
+@media print{.gl-tools{display:none!important}}
 </style>
 </head>
 <body>
@@ -193,6 +203,117 @@ footer{margin-top:54px;padding-top:18px;border-top:1px solid var(--bd);color:var
   </div>
 </div>
 
+<h2>Glosario del analizador</h2>
+<div class="sub">palabras del código, explicadas sin vueltas</div>
+<div class="gl-tools">
+  <input type="search" id="glBuscar" placeholder="Buscar un término...">
+</div>
+<div class="gl" id="gl">
+  <div class="card term">
+    <h3>input()</h3>
+    <p>Frena el programa, muestra un mensaje y espera que el operador escriba algo y apriete Enter. Lo que escribió vuelve siempre como <b>texto</b>.</p>
+    <p class="an">💡 Como el cajero que te pregunta "¿cuánto querés retirar?" y espera tu respuesta.</p>
+    <pre class="ex">nombre = input("¿Cómo te llamás? ")</pre>
+  </div>
+  <div class="card term">
+    <h3>float()</h3>
+    <p>Convierte un texto en un número con decimales. Si no se puede convertir, el programa da error (<code>ValueError</code>).</p>
+    <p class="an">💡 Un traductor de texto a número.</p>
+    <pre class="ex">float("215")   # 215.0
+float("abc")   # ValueError</pre>
+  </div>
+  <div class="card term">
+    <h3>zip()</h3>
+    <p>Junta dos o más listas en parejas, posición por posición: el primero con el primero, el segundo con el segundo.</p>
+    <p class="an">💡 Un cierre que va uniendo diente con diente, o parejas armadas para bailar.</p>
+    <pre class="ex">for n, v in zip(["Vrms","Irms"], [215.0, 4.2]):
+    print(n, v)</pre>
+  </div>
+  <div class="card term">
+    <h3>class (clase)</h3>
+    <p>El molde con el que se fabrican objetos. Define qué datos y qué acciones tiene ese tipo de cosa. Cada pieza fabricada con el molde es un <b>objeto</b>.</p>
+    <p class="an">💡 El plano de una casa: con un solo plano se pueden construir muchas casas.</p>
+    <pre class="ex">class Sensor:
+    ...</pre>
+  </div>
+  <div class="card term">
+    <h3>self</h3>
+    <p>Es la forma en que un objeto habla de sí mismo y de sus propios datos dentro de la clase.</p>
+    <p class="an">💡 El "mi" de "mi mochila": se refiere a los datos de este objeto y no a los de otro.</p>
+    <pre class="ex">self.valor = 215.0</pre>
+  </div>
+  <div class="card term">
+    <h3>__init__</h3>
+    <p>Método que se ejecuta solo cuando se crea un objeto. Sirve para dejar listos sus datos iniciales.</p>
+    <p class="an">💡 Armar la mochila antes de salir: cuando el objeto nace ya trae sus cosas.</p>
+    <pre class="ex">def __init__(self, nombre):
+    self.nombre = nombre</pre>
+  </div>
+  <div class="card term">
+    <h3>Herencia</h3>
+    <p>Una clase hija recibe todo lo de una clase madre, y después puede agregar o cambiar cosas.</p>
+    <p class="an">💡 Una receta de familia: heredás la base y le ponés tu toque.</p>
+    <pre class="ex">class SensorVrms(Sensor):
+    ...</pre>
+  </div>
+  <div class="card term">
+    <h3>super()</h3>
+    <p>Permite que la clase hija llame a la clase madre.</p>
+    <p class="an">💡 La hija levanta el teléfono y le pregunta a la madre cómo se hacía.</p>
+    <pre class="ex">super().__init__("Vrms")</pre>
+  </div>
+  <div class="card term">
+    <h3>Override (sobrescribir)</h3>
+    <p>La clase hija define un método con el mismo nombre que el de la madre, y se usa el de la hija.</p>
+    <p class="an">💡 La receta base dice "sal"; la tuya dice "sal y pimienta". Se cocina con la tuya.</p>
+    <pre class="ex">def estado(self):
+    ...   # reemplaza al de Sensor</pre>
+  </div>
+  <div class="card term">
+    <h3>Lista  [ ]</h3>
+    <p>Colección ordenada de elementos. Se accede por posición y la primera posición es la <b>0</b>.</p>
+    <p class="an">💡 Una fila de casilleros numerados desde el cero.</p>
+    <pre class="ex">valores = [215.0, 4.2, 3.1]
+valores[0]   # 215.0</pre>
+  </div>
+  <div class="card term">
+    <h3>Diccionario  { }</h3>
+    <p>Guarda datos con una etiqueta (clave) y su valor. Se accede por la etiqueta, no por la posición.</p>
+    <p class="an">💡 Una agenda de contactos: buscás por nombre y te da el teléfono.</p>
+    <pre class="ex">reg = {"vrms": 215.0, "alarmas": 0}
+reg["vrms"]   # 215.0</pre>
+  </div>
+  <div class="card term">
+    <h3>append()</h3>
+    <p>Agrega un elemento al final de una lista.</p>
+    <p class="an">💡 Sumar un vagón al final del tren.</p>
+    <pre class="ex">lista.append(reg)</pre>
+  </div>
+  <div class="card term">
+    <h3>len()</h3>
+    <p>Cuenta cuántos elementos tiene una lista.</p>
+    <p class="an">💡 Contar cuántos casilleros están ocupados.</p>
+    <pre class="ex">len([215.0, 4.2])   # 2</pre>
+  </div>
+  <div class="card term">
+    <h3>while True  y  break</h3>
+    <p><code>while True</code> repite un bloque sin parar. <code>break</code> corta la repetición cuando se cumple lo que vos decidas.</p>
+    <p class="an">💡 Un videojuego que sigue hasta que aparece "game over".</p>
+    <pre class="ex">while True:
+    dato = float(input("Dato: "))
+    if dato == -1:
+        break</pre>
+  </div>
+  <div class="card term">
+    <h3>f-string</h3>
+    <p>Un texto donde podés meter valores entre llaves. Se escribe con una <code>f</code> antes de las comillas.</p>
+    <p class="an">💡 Una carta con huecos que se rellenan solos.</p>
+    <pre class="ex">v = 215.0
+print(f"Vrms: {v} V")</pre>
+  </div>
+</div>
+<div class="gl-empty" id="glVacio">No hay ningún término con esa palabra.</div>
+
 <h2>Cómo prepararte</h2>
 <div class="sub">sin IA, solo vos y tu proyecto</div>
 <div class="card">
@@ -229,6 +350,16 @@ document.getElementById('themeBtn').addEventListener('click',function(){
   document.documentElement.setAttribute('data-theme',nx);
   try{localStorage.setItem('guia-tema',nx);}catch(e){}
 });
+
+var glI=document.getElementById('glBuscar');
+if(glI){glI.addEventListener('input',function(){
+  var q=glI.value.trim().toLowerCase(), n=0;
+  document.querySelectorAll('#gl .term').forEach(function(c){
+    var ok=!q||c.textContent.toLowerCase().indexOf(q)!==-1;
+    c.style.display=ok?'':'none'; if(ok)n++;
+  });
+  document.getElementById('glVacio').style.display=n?'none':'block';
+});}
 </script>
 </body>
 </html>
